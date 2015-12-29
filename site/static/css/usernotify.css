@@ -1,0 +1,38 @@
+.catshead {
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+li.active {
+	font-weight: bold;
+}
+
+.adminform {
+	margin-bottom: 30px;
+}
+
+.head1 { text-align: left; }
+.head23 { padding-left: 2em; padding-right: 2em; }
+
+#notify-form {
+	position: relative;
+}
+#notify-form  button {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+
+/* notifications config form */
+/*
+.control-group {
+	display: block;
+}
+.control-label {
+	float: left;
+}
+.controls {
+	margin-left: 6em;
+}
+*/

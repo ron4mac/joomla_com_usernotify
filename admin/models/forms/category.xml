@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+
+		<field name="pub" type="radio" class="btn-group btn-group-yesno" default="0"
+			label="COM_USERNOTIFY_FIELD_ONPUB_LABEL" 
+			description="COM_USERNOTIFY_FIELD_ONPUB_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field name="upd" type="radio" class="btn-group btn-group-yesno" default="0"
+			label="COM_USERNOTIFY_FIELD_ONUPD_LABEL" 
+			description="COM_USERNOTIFY_FIELD_ONUPD_DESC">
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field name="email_tmpl" type="editor" cols="80" rows="10"
+			buttons="true" hide="pagebreak,readmore,article,image"
+			filter="safehtml"
+			label="COM_USERNOTIFY_FIELD_EMAIL_LABEL"
+			description="COM_USERNOTIFY_FIELD_EMAIL_DESC" />
+
+		<field name="sms_tmpl" type="editor" width="80%" height="400"
+			buttons="true" hide="pagebreak,readmore,article,image"
+			filter="safehtml"
+			label="COM_USERNOTIFY_FIELD_SMS_LABEL"
+			description="COM_USERNOTIFY_FIELD_SMS_DESC" />
+
+		<field name="nid" type="hidden" value="0" />
+		<field name="cid" type="hidden" value="0" />
+
+	</fieldset>
+</form>

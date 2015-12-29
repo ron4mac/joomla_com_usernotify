@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+
+	<fieldset name="component" label="COM_USERNOTIFY_COMPONENT_LABEL" addfieldpath="/administrator/components/com_usernotify/models/fields">
+
+		<field name="target" type="components"
+			multiple="multiple"
+			description="COM_USERNOTIFY_FIELD_COMPONENTS_DESC"
+			label="COM_USERNOTIFY_FIELD_COMPONENTS_LABEL">
+		</field>
+
+	</fieldset>
+
+	<fieldset name="category" label="JCATEGORY" description="COM_USERNOTIFY_CATEGORY_DESC">
+
+		<field name="optinout" type="list" class="" default="0"
+			label="COM_USERNOTIFY_FIELD_OPTINOUT_LABEL"
+			description="COM_USERNOTIFY_FIELD_OPTINOUT_DESC">
+				<option value="0">COM_USERNOTIFY_FIELD_OPTINOUT_OUT</option>
+				<option value="1">COM_USERNOTIFY_FIELD_OPTINOUT_IN</option>
+		</field>
+
+		<field name="pub" type="radio" class="btn-group btn-group-yesno" default="0"
+			label="COM_USERNOTIFY_FIELD_ONPUB_LABEL" 
+			description="COM_USERNOTIFY_FIELD_ONPUB_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+
+		<field name="upd" type="radio" class="btn-group btn-group-yesno" default="0"
+			label="COM_USERNOTIFY_FIELD_ONUPD_LABEL" 
+			description="COM_USERNOTIFY_FIELD_ONUPD_DESC">
+				<option value="1">JYES</option>
+				<option value="0">JNO</option>
+			</field>
+
+		<field name="subject" type="text"
+			filter="safehtml"
+			label="COM_USERNOTIFY_FIELD_SUBJECT_LABEL"
+			description="COM_USERNOTIFY_FIELD_SUBJECT_DESC" />
+
+		<field name="email_tmpl" type="editor" width="80%" height="400"
+			buttons="true" hide="pagebreak,readmore,article,image"
+			filter="safehtml"
+			label="COM_USERNOTIFY_FIELD_EMAIL_LABEL"
+			description="COM_USERNOTIFY_FIELD_EMAIL_DESC" />
+
+		<field name="sms_tmpl" type="editor" width="80%" height="400"
+			buttons="true" hide="pagebreak,readmore,article,image"
+			filter="safehtml"
+			label="COM_USERNOTIFY_FIELD_SMS_LABEL"
+			description="COM_USERNOTIFY_FIELD_SMS_DESC" />
+
+	</fieldset>
+
+	<fieldset name="permissions"
+		description="JCONFIG_PERMISSIONS_DESC"
+		label="JCONFIG_PERMISSIONS_LABEL">
+
+		<field name="rules" type="rules"
+			component="com_usernotify"
+			filter="rules"
+			validate="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			section="component" />
+
+	</fieldset>
+
+</config>

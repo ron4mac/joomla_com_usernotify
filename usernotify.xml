@@ -26,11 +26,11 @@
 		<filename>index.html</filename>
 		<filename>usernotify.php</filename>
 		<filename>controller.php</filename>
-		<folder>controllers</folder>
+		<!-- <folder>controllers</folder> -->
 		<folder>models</folder>
 		<folder>views</folder>
 		<folder>static</folder>
-		<folder>helpers</folder>
+		<!-- <folder>helpers</folder> -->
 		<folder>language</folder>
 	</files>
 

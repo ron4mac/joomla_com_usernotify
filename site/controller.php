@@ -1,35 +1,17 @@
 <?php
-/**
- * @version		$Id: controller.php 21097 2011-04-07 15:38:03Z dextercowley $
- * @package		Joomla.Site
- * @subpackage	com_usernotify
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
+/*
+* @package    User Notify Component
+* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @license    GNU General Public License version 3 or later; see LICENSE.txt
+*/
 
-// No direct access
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
 
-/**
- * UserNotify Component Controller
- *
- * @package		Joomla.Site
- * @subpackage	com_usernotify
- * @since 1.5
- */
 class UserNotifyController extends JControllerForm	//Legacy
 {
-	/**
-	 * Method to display a view.
-	 *
-	 * @param	boolean			If true, the view output will be cached
-	 * @param	array			An array of safe url parameters and their variable types, for valid values see {@link JFilterInput::clean()}.
-	 *
-	 * @return	JController		This object to support chaining.
-	 * @since	1.5
-	 */
+
 	public function display ($cachable=false, $urlparams=false)
 	{
 /*		// Initialise variables.
@@ -64,6 +46,7 @@ class UserNotifyController extends JControllerForm	//Legacy
 */
 		return parent::display($cachable, $urlparams);
 	}
+
 
 	public function update ()
 	{

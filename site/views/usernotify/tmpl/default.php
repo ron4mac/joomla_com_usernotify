@@ -1,5 +1,10 @@
 <?php
-// no direct access
+/*
+* @package    User Notify Component
+* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @license    GNU General Public License version 3 or later; see LICENSE.txt
+*/
+
 defined('_JEXEC') or die;
 
 // so we can use bootstrap tabs

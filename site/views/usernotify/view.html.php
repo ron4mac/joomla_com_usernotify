@@ -1,22 +1,14 @@
 <?php
-/**
- * @version		$Id: view.html.php 20196 2011-01-09 02:40:25Z ian $
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
+/*
+* @package    User Notify Component
+* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @license    GNU General Public License version 3 or later; see LICENSE.txt
+*/
 
-// No direct access
 defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
-/**
- * HTML View class for the User Notify component
- *
- * @package		Joomla.Site
- * @subpackage	com_usernotify
- * @since		1.5
- */
 class UserNotifyViewUsernotify extends JViewLegacy
 {
 	protected $state;

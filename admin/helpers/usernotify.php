@@ -1,28 +1,14 @@
 <?php
-/**
- * @version		$Id: usernotify.php 20196 2011-01-09 02:40:25Z ian $
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
+/*
+* @package    User Notify Component
+* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @license    GNU General Public License version 3 or later; see LICENSE.txt
+*/
 
-// No direct access
 defined('_JEXEC') or die;
 
-/**
- * UserNotify helper.
- *
- * @package		Joomla.Administrator
- * @subpackage	com_usernotify
- * @since		1.6
- */
 class UserNotifyHelper
 {
-	/**
-	 * Configure the Linkbar.
-	 *
-	 * @param	string	The name of the active view.
-	 * @since	1.6
-	 */
 	public static function addSubmenu($vName = 'usernotify')
 	{
 		JSubMenuHelper::addEntry(
@@ -42,13 +28,7 @@ class UserNotifyHelper
 		}
 	}
 
-	/**
-	 * Gets a list of the actions that can be performed.
-	 *
-	 * @param	int		The category ID.
-	 * @return	JObject
-	 * @since	1.6
-	 */
+
 	public static function getActions($categoryId = 0)
 	{
 		$user	= JFactory::getUser();
@@ -70,4 +50,5 @@ class UserNotifyHelper
 
 		return $result;
 	}
+
 }

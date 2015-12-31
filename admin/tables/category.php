@@ -1,27 +1,21 @@
 <?php
-// No direct access
+/*
+* @package    User Notify Component
+* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @license    GNU General Public License version 3 or later; see LICENSE.txt
+*/
+
 defined('_JEXEC') or die;
 
 class UserNotifyTableCategory extends JTable
 {
-	/**
-	 * Constructor
-	 *
-	 * @param JDatabase A database connector object
-	 */
+
 	public function __construct(&$db)
 	{
 		parent::__construct('#__usernotify_c', 'nid', $db);
 	}
 
-	/**
-	 * Overloaded bind function to pre-process the params.
-	 *
-	 * @param	array		Named array
-	 * @return	null|string	null is operation was satisfactory, otherwise returns an error
-	 * @see		JTable:bind
-	 * @since	1.5
-	 */
+
 	public function bind($array, $ignore = '')
 	{
 		if (isset($array['params']) && is_array($array['params'])) {
@@ -38,18 +32,7 @@ class UserNotifyTableCategory extends JTable
 		return parent::bind($array, $ignore);
 	}
 
-	/**
-	 * Method to set the publishing state for a row or list of rows in the database
-	 * table.  The method respects checked out rows by other users and will attempt
-	 * to checkin rows that it can after adjustments are made.
-	 *
-	 * @param	mixed	An optional array of primary key values to update.  If not
-	 *					set the instance property value is used.
-	 * @param	integer The publishing state. eg. [0 = unpublished, 1 = published]
-	 * @param	integer The user id of the user performing the operation.
-	 * @return	boolean	True on success.
-	 * @since	1.0.4
-	 */
+
 /*
 	public function publish($pks = null, $state = 1, $userId = 0)
 	{

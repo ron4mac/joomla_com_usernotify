@@ -48,7 +48,7 @@ $tabOptions = array('active' => 'tab1_id');
 				</tr>
 				<? foreach ($this->cats as $cat): ?>
 				<tr>
-					<td><?=$cat['title']?></td>
+					<td class="hasPopover" data-content="<?=strip_tags($cat['description'])?>"><?=$cat['title']?></td>
 					<td class="center"><?=$this->form->renderField('email'.$cat['cid'], 'cats')?></td>
 					<td class="center"><?=$this->form->renderField('sms'.$cat['cid'], 'cats')?></td>
 					<td class="center"><?=$this->form->renderField('update'.$cat['cid'], 'cats')?></td>

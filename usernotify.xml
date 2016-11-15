@@ -3,12 +3,12 @@
 
 	<name>com_usernotify</name>
 	<author>Ron Crans</author>
-	<creationDate>September 2015</creationDate>
-	<copyright>Copyright (C) 2015 RJCreations. All rights reserved.</copyright>
+	<creationDate>November 2016</creationDate>
+	<copyright>Copyright (C) 2016 RJCreations. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
 	<authorEmail>ron@rjconline.net</authorEmail>
 	<authorUrl>rjconline.net</authorUrl>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<description>COM_USERNOTIFY_XML_DESCRIPTION</description>
 
 	<install> <!-- Runs on install -->
@@ -26,11 +26,9 @@
 		<filename>index.html</filename>
 		<filename>usernotify.php</filename>
 		<filename>controller.php</filename>
-		<!-- <folder>controllers</folder> -->
 		<folder>models</folder>
 		<folder>views</folder>
 		<folder>static</folder>
-		<!-- <folder>helpers</folder> -->
 		<folder>language</folder>
 	</files>
 

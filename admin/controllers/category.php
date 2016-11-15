@@ -11,30 +11,28 @@ jimport('joomla.application.component.controllerform');
 
 class UserNotifyControllerCategory extends JControllerForm
 {
-	protected $view_list = 'usernotify';
+	protected $view_list = 'usernotify';	// view to return to after edit/cancel
 
 	public function config ($key=null, $urlVar=null)
 	{	//echo'<xmp>';var_dump($this);jexit();
-		$app   = JFactory::getApplication();
+		$app = JFactory::getApplication();
 		$model = $this->getModel();
 		$table = $model->getTable();
-		$cid   = $this->input->post->get('cid', array(), 'array');
+		$cid = $this->input->post->get('cid', array(), 'array');
 		$context = "$this->option.cfg.$this->context";
 
 		// Determine the name of the primary key for the data.
-		if (empty($key))
-		{
+		if (empty($key)) {
 			$key = $table->getKeyName();
 		}
 
 		// To avoid data collisions the urlVar may be different from the primary key.
-		if (empty($urlVar))
-		{
+		if (empty($urlVar)) {
 			$urlVar = $key;
 		}
 
 		// Get the previous record id (if any) and the current record id.
-		$recordId = (int) (count($cid) ? $cid[0] : $this->input->getInt($urlVar));
+		$recordId = (int) (count($cid) ? $cid[0] : $this->input->getInt('ncid'/*$urlVar*/));
 		$checkin = property_exists($table, 'checked_out');	//echo'<xmp>';var_dump($recordId);jexit();
 
 		$catid = $recordId;
@@ -48,8 +46,7 @@ class UserNotifyControllerCategory extends JControllerForm
 	//	$model->setState('category.cfg.cid', $catid);
 
 		// Access check.
-		if (!$this->allowEdit(array($key => $recordId), $key))
-		{
+		if (!$this->allowEdit(array($key => $recordId), $key)) {
 			$this->setError(JText::_('JLIB_APPLICATION_ERROR_EDIT_NOT_PERMITTED'));
 			$this->setMessage($this->getError(), 'error');
 
@@ -64,8 +61,7 @@ class UserNotifyControllerCategory extends JControllerForm
 		}
 
 		// Attempt to check-out the new record for editing and redirect.
-		if ($checkin && !$model->checkout($recordId))
-		{
+		if ($checkin && !$model->checkout($recordId)) {
 			// Check-out failed, display a notice but allow the user to see the record.
 			$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_CHECKOUT_FAILED', $model->getError()));
 			$this->setMessage($this->getError(), 'error');
@@ -78,9 +74,7 @@ class UserNotifyControllerCategory extends JControllerForm
 			);
 
 			return false;
-		}
-		else
-		{
+		} else {
 			// Check-out succeeded, push the new record id into the session.
 			$this->holdEditId($context, $recordId);
 			$app->setUserState($context . '.data', null);
@@ -98,10 +92,10 @@ class UserNotifyControllerCategory extends JControllerForm
 
 	public function trash ()
 	{
-		$app   = JFactory::getApplication();
+		$app = JFactory::getApplication();
 		$model = $this->getModel();
 		$table = $model->getTable();
-		$cids  = $this->input->post->get('cid', array(), 'array');
+		$cids = $this->input->post->get('cid', array(), 'array');
 
 		$model->resetCategories($cids);
 

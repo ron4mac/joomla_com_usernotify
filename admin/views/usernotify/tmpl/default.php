@@ -13,14 +13,14 @@ JHtml::_('script','system/multiselect.js', false, true);
 
 JHtml::stylesheet('administrator/components/com_usernotify/static/css/usernotify.css');
 
-$user		= JFactory::getUser();
-$userId		= $user->get('id');
-$listOrder	= $this->escape($this->state->get('list.ordering'));
-$listDirn	= $this->escape($this->state->get('list.direction'));
-$canOrder	= $user->authorise('core.edit.state', 'com_usernotify.category');
-$archived	= $this->state->get('filter.state') == 2 ? true : false;
-$trashed	= $this->state->get('filter.state') == -2 ? true : false;
-$saveOrder	= $listOrder == 'a.ordering';
+$user = JFactory::getUser();
+$userId = $user->get('id');
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDirn = $this->escape($this->state->get('list.direction'));
+$canOrder = $user->authorise('core.edit.state', 'com_usernotify.category');
+$archived = $this->state->get('filter.state') == 2 ? true : false;
+$trashed = $this->state->get('filter.state') == -2 ? true : false;
+$saveOrder = $listOrder == 'a.ordering';
 //echo'<xmp>';var_dump($this->items);echo'</xmp>';
 //error_log('We have entered the usernotify view');
 //trigger_error('We have entered the usernotify view');
@@ -65,19 +65,20 @@ $saveOrder	= $listOrder == 'a.ordering';
 		</tfoot>
 		<tbody>
 		<?php foreach ($this->items as $i => $item) :
-			$ordering	= ($listOrder == 'a.ordering');
+			$ordering = ($listOrder == 'a.ordering');
+			$cat_edt_link = JRoute::_('index.php?option=com_usernotify&task=category.config&ncid='. $item->catid);
 			//$item->cat_link	= JRoute::_('index.php?option=com_categories&extension=com_usernotify&task=edit&type=other&cid[]='. $item->catid);
-			$canCreate	= $user->authorise('core.create',		'com_usernotify.category.'.$item->catid);
-			$canEdit	= $user->authorise('core.edit',			'com_usernotify.category.'.$item->catid);
+			$canCreate = $user->authorise('core.create', 'com_usernotify.category.'.$item->catid);
+			$canEdit = $user->authorise('core.edit', 'com_usernotify.category.'.$item->catid);
 			?>
 			<tr class="row<?php echo $i % 2; ?>">
 				<td class="center">
 					<?php echo JHtml::_('grid.id', $i, $item->catid); ?>
 				</td>
 				<td>
-					<?php echo $this->escape($item->title).' ('.$this->escape($item->extension).')'; ?>
+					<a href="<?php echo $cat_edt_link; ?>"><?php echo $this->escape($item->title).' ('.$this->escape($item->extension).')'; ?></a>
 				</td>
-			<?php if($item->nid): ?>
+			<?php if ($item->nid): ?>
 				<td class="center<?= $item->pub?' ticked':'' ?>">
 				</td>
 				<td class="center<?= $item->upd?' ticked':'' ?>">

@@ -85,7 +85,7 @@ class UserNotifyModelUsernotify extends JModelForm
 	{
 		if (!$this->cats) {
 			$db = $this->getDbo();
-			$db->setQuery('SELECT uc.cid, c.title FROM `#__usernotify_c` AS uc LEFT JOIN `#__categories` AS c ON uc.cid = c.id');
+			$db->setQuery('SELECT uc.cid, c.title, c.description FROM `#__usernotify_c` AS uc LEFT JOIN `#__categories` AS c ON uc.cid = c.id');
 			$this->cats = $db->loadAssocList();
 		}
 		return $this->cats;

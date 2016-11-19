@@ -23,6 +23,9 @@ li.active {
 	right: 0;
 }
 
+table.catstbl {
+	cursor: default;
+}
 
 /* notifications config form */
 /*

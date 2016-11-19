@@ -15,11 +15,11 @@ class UserNotifyViewUserNotify extends JViewLegacy
 	protected $pagination;
 	protected $state;
 
-	public function display($tpl = null)
+	public function display ($tpl = null)
 	{
-		$this->state		= $this->get('State');
-		$this->items		= $this->get('Items');
-		$this->pagination	= $this->get('Pagination');
+		$this->state = $this->get('State');
+		$this->items = $this->get('Items');
+		$this->pagination = $this->get('Pagination');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -37,13 +37,13 @@ class UserNotifyViewUserNotify extends JViewLegacy
 		parent::display($tpl);
 	}
 
-	protected function addToolbar()
+	protected function addToolbar ()
 	{
 		require_once JPATH_COMPONENT.'/helpers/usernotify.php';
 
-		$state	= $this->get('State');
-		$canDo	= UserNotifyHelper::getActions($state->get('filter.category_id'));
-		$user	= JFactory::getUser();
+		$state = $this->get('State');
+		$canDo = UserNotifyHelper::getActions($state->get('filter.category_id'));
+		$user = JFactory::getUser();
 		
 		JToolBarHelper::title(JText::_('COM_USERNOTIFY_MANAGER_CATEGORIES'), 'notification-2 usernotify');
 		if ($canDo->get('core.edit')) {
@@ -62,4 +62,5 @@ class UserNotifyViewUserNotify extends JViewLegacy
 
 		JToolBarHelper::help('usernotify', true);
 	}
+
 }

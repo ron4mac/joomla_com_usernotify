@@ -75,7 +75,7 @@ $saveOrder = $listOrder == 'a.ordering';
 				<td class="center">
 					<?php echo JHtml::_('grid.id', $i, $item->catid); ?>
 				</td>
-				<td>
+				<td class="hasPopover" data-content="<?=strip_tags($item->description)?>">
 					<a href="<?php echo $cat_edt_link; ?>"><?php echo $this->escape($item->title).' ('.$this->escape($item->extension).')'; ?></a>
 				</td>
 			<?php if ($item->nid): ?>

@@ -12,7 +12,7 @@ jimport('joomla.application.component.modellist');
 class UserNotifyModelUserNotify extends JModelList
 {
 
-	public function __construct($config = array())
+	public function __construct ($config = array())
 	{
 		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array('catID', 'pub', 'upd');
@@ -20,13 +20,9 @@ class UserNotifyModelUserNotify extends JModelList
 		parent::__construct($config);
 	}
 
-
-	protected function populateState($ordering = null, $direction = null)
+	protected function populateState ($ordering = null, $direction = null)
 	{
-		// Initialise variables.
-		$app = JFactory::getApplication('administrator');
-
-		// Load the filter state.
+		// Load the filter state
 		$search = $this->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
 
@@ -42,25 +38,25 @@ class UserNotifyModelUserNotify extends JModelList
 		$language = $this->getUserStateFromRequest($this->context.'.filter.language', 'filter_language', '');
 		$this->setState('filter.language', $language);
 
-		// Load the parameters.
+		// Load the parameters
 		$params = JComponentHelper::getParams('com_usernotify');
 		$this->setState('params', $params);
 
-		// List state information.
+		// List state information
 		parent::populateState('a.title', 'asc');
 	}
 
-	protected function getListQuery()
+	protected function getListQuery ()
 	{
-		$cOpts = JComponentHelper::getParams('com_usernotify');	//echo'<xmp>';var_dump($cOpts->get('target'));echo'</xmp>';//jexit();
+		$cOpts = JComponentHelper::getParams('com_usernotify');
 		$targs = '"' . implode('","', $cOpts->get('target')) . '"';
-		
-		// Create a new query object.
-		$db		= $this->getDbo();
-		$query	= $db->getQuery(true);
 
-		// Select the required fields from the table.
-		$query->select('c.id AS catid, c.title, c.extension, n.*')
+		// Create a new query object
+		$db = $this->getDbo();
+		$query = $db->getQuery(true);
+
+		// Select the required fields from the table
+		$query->select('c.id AS catid, c.title, c.description, c.extension, n.*')
 			->from('`#__categories` AS c')
 			->where('c.extension IN ('.$targs.')')
 			->join('LEFT', '`#__usernotify_c` AS n ON n.cid = c.id');

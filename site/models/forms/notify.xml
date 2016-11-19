@@ -27,7 +27,7 @@
 				label="COM_USERNOTIFY_ALTEMAIL_LABEL"
 				validate="email"
 				size="45"
-				showon="oo_email:1"
+				showon="oo_all:1[AND]oo_email:1"
 			/>
 
 			<field name="sms_ok" type="radio" class="radio btn-group btn-group-yesno"
@@ -45,7 +45,7 @@
 				label="COM_USERNOTIFY_SMSADDR_LABEL"
 				validate="email"
 				size="45"
-				showon="sms_ok:1,oo_all:1"
+				showon="oo_all:1[AND]sms_ok:1"
 			/>
 
 		</fieldset>

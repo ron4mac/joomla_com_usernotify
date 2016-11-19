@@ -14,9 +14,6 @@ class UserNotifyModelUsernotify extends JModelForm
 
 	public function getForm ($data=array(), $loadData=true)
 	{
-		// Initialise variables.
-		$app = JFactory::getApplication();
-
 		// Get the form.
 		$form = $this->loadForm('com_usernotify.notify', 'notify', array('control' => 'jform', 'load_data' => $loadData));
 		if (empty($form)) {
@@ -24,7 +21,6 @@ class UserNotifyModelUsernotify extends JModelForm
 		}
 
 		$cats = $this->getCatSettings();
-		//echo'<xmp>';var_dump($cats);echo'</xmp>';
 
 		$flds = '';
 		$ynradio = '" type="radio" default="0" hiddenLabel="hidden" class="btn-group btn-group-yesno catset"><option value="1" class="btn-mini">JYES</option><option value="0" class="btn-mini">JNO</option></field>';
@@ -58,7 +54,6 @@ class UserNotifyModelUsernotify extends JModelForm
 		return $form;
 	}
 
-
 	public function getItem ($pk = null)
 	{
 		$uid = JFactory::getUser()->get('id');
@@ -70,7 +65,6 @@ class UserNotifyModelUsernotify extends JModelForm
 		}
 	}
 
-
 	public function saveUserSettings ($data)
 	{
 		$vals = $data;	//['opts'];
@@ -79,7 +73,6 @@ class UserNotifyModelUsernotify extends JModelForm
 		$this->tbl = $this->getTable();
 		$this->tbl->save($vals);
 	}
-
 
 	public function getCatSettings ()
 	{
@@ -91,27 +84,25 @@ class UserNotifyModelUsernotify extends JModelForm
 		return $this->cats;
 	}
 
-
 	protected function loadFormData ()
 	{
+		$app = JFactory::getApplication();
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_usernotify.notification.data', array());		//echo'<xmp>';var_dump($data);jexit();
+		$data = $app->getUserState('com_usernotify.notification.data', array());
 
 		if (empty($data)) {
-			$data = $this->getItem();		//echo'<xmp>';var_dump($data->cid,$this->getState());jexit();
+			$data = $this->getItem();
 
 			// Prime some default values.
 			if ($this->getState('category.id') == 0) {
-				$app = JFactory::getApplication();
-				$data->cid = JFactory::getApplication()->input->getInt('cid', $app->getUserState('com_usernotify.usernotify.filter.category_id'));
+				$data->cid = $app->input->getInt('cid', $app->getUserState('com_usernotify.usernotify.filter.category_id'));
 			}
 			if (!$data->cid)
 				$data->cid = $app->getUserState('com_usernotify.cfg.category.cid');
-		}		//echo'<xmp>';var_dump($data);jexit();
+		}
 
 		return $data;
 	}
-
 
 	private function getUserSettings ()
 	{

@@ -1,7 +1,7 @@
 <?php
 /*
 * @package    User Notify Component
-* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @copyright  (C) 2016 RJCreations. All rights reserved.
 * @license    GNU General Public License version 3 or later; see LICENSE.txt
 */
 
@@ -26,7 +26,6 @@ class UserNotifyController extends JControllerLegacy
 			$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_UNHELD_ID', $id));
 			$this->setMessage($this->getError(), 'error');
 			$this->setRedirect(JRoute::_('index.php?option=com_usernotify&view=usernotify', false));
-
 			return false;
 		}
 
@@ -34,4 +33,5 @@ class UserNotifyController extends JControllerLegacy
 
 		return $this;
 	}
+
 }

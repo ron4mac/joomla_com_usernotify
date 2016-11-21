@@ -1,7 +1,7 @@
 <?php
 /*
 * @package    User Notify Component
-* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @copyright  (C) 2016 RJCreations. All rights reserved.
 * @license    GNU General Public License version 3 or later; see LICENSE.txt
 */
 
@@ -10,13 +10,13 @@ defined('_JEXEC') or die;
 class UserNotifyTableCategory extends JTable
 {
 
-	public function __construct(&$db)
+	public function __construct (&$db)
 	{
 		parent::__construct('#__usernotify_c', 'nid', $db);
 	}
 
 
-	public function bind($array, $ignore = '')
+	public function bind ($array, $ignore = '')
 	{
 		if (isset($array['params']) && is_array($array['params'])) {
 			$registry = new JRegistry();
@@ -29,6 +29,7 @@ class UserNotifyTableCategory extends JTable
 			$registry->loadArray($array['metadata']);
 			$array['metadata'] = (string)$registry;
 		}
+
 		return parent::bind($array, $ignore);
 	}
 

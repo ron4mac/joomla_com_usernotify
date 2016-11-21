@@ -1,7 +1,7 @@
 <?php
 /*
 * @package    User Notify Component
-* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @copyright  (C) 2016 RJCreations. All rights reserved.
 * @license    GNU General Public License version 3 or later; see LICENSE.txt
 */
 
@@ -54,6 +54,7 @@ class UserNotifyModelUsernotify extends JModelForm
 		return $form;
 	}
 
+
 	public function getItem ($pk = null)
 	{
 		$uid = JFactory::getUser()->get('id');
@@ -65,6 +66,7 @@ class UserNotifyModelUsernotify extends JModelForm
 		}
 	}
 
+
 	public function saveUserSettings ($data)
 	{
 		$vals = $data;	//['opts'];
@@ -73,6 +75,7 @@ class UserNotifyModelUsernotify extends JModelForm
 		$this->tbl = $this->getTable();
 		$this->tbl->save($vals);
 	}
+
 
 	public function getCatSettings ()
 	{
@@ -83,6 +86,7 @@ class UserNotifyModelUsernotify extends JModelForm
 		}
 		return $this->cats;
 	}
+
 
 	protected function loadFormData ()
 	{
@@ -103,6 +107,7 @@ class UserNotifyModelUsernotify extends JModelForm
 
 		return $data;
 	}
+
 
 	private function getUserSettings ()
 	{

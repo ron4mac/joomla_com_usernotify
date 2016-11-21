@@ -1,7 +1,7 @@
 <?php
 /*
 * @package    User Notify Component
-* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @copyright  (C) 2016 RJCreations. All rights reserved.
 * @license    GNU General Public License version 3 or later; see LICENSE.txt
 */
 
@@ -13,7 +13,7 @@ class JFormFieldComponents extends JFormFieldList
 {
 	protected $type = 'Components';
 
-	protected function getOptions()
+	protected function getOptions ()
 	{
 		// Initialise variables.
 		$options = array();

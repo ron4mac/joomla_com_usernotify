@@ -1,7 +1,7 @@
 <?php
 /*
 * @package    User Notify Component
-* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @copyright  (C) 2016 RJCreations. All rights reserved.
 * @license    GNU General Public License version 3 or later; see LICENSE.txt
 */
 
@@ -13,6 +13,7 @@ class TableUsernotify extends JTable
 	{
 		parent::__construct('#__usernotify_u', array('id','uid'), $db);
 	}
+
 
 	public function bind ($array, $ignore = array())
 	{
@@ -27,8 +28,10 @@ class TableUsernotify extends JTable
 			$registry->loadArray($array['metadata']);
 			$array['metadata'] = (string)$registry;
 		}
+
 		return parent::bind($array, $ignore);
 	}
+
 
 //	public function store ($updateNulls = false)
 //	{

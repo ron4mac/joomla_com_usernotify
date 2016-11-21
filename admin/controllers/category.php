@@ -1,7 +1,7 @@
 <?php
 /*
 * @package    User Notify Component
-* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @copyright  (C) 2016 RJCreations. All rights reserved.
 * @license    GNU General Public License version 3 or later; see LICENSE.txt
 */
 
@@ -89,6 +89,7 @@ class UserNotifyControllerCategory extends JControllerForm
 			return true;
 		}
 	}
+
 
 	public function trash ()
 	{

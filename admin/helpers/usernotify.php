@@ -1,7 +1,7 @@
 <?php
 /*
 * @package    User Notify Component
-* @copyright  (C) 2015 RJCreations. All rights reserved.
+* @copyright  (C) 2016 RJCreations. All rights reserved.
 * @license    GNU General Public License version 3 or later; see LICENSE.txt
 */
 
@@ -21,7 +21,7 @@ class UserNotifyHelper
 			'index.php?option=com_categories&extension=com_usernotify',
 			$vName == 'categories'
 		);
-		if ($vName=='categories') {
+		if ($vName == 'categories') {
 			JToolBarHelper::title(
 				JText::sprintf('COM_CATEGORIES_CATEGORIES_TITLE',JText::_('com_usernotify')),
 				'usernotify-categories');
@@ -31,8 +31,8 @@ class UserNotifyHelper
 
 	public static function getActions($categoryId = 0)
 	{
-		$user	= JFactory::getUser();
-		$result	= new JObject;
+		$user = JFactory::getUser();
+		$result = new JObject;
 
 		if (empty($categoryId)) {
 			$assetName = 'com_usernotify';

@@ -13,7 +13,7 @@ class UserNotifyModelCategory extends JModelAdmin
 {
 	protected $text_prefix = 'COM_USERNOTIFY';
 
-	protected function canDelete($record)
+	protected function canDelete ($record)
 	{
 		if (!empty($record->id)) {
 			if ($record->state != -2) {
@@ -31,7 +31,7 @@ class UserNotifyModelCategory extends JModelAdmin
 	}
 
 
-	protected function canEditState($record)
+	protected function canEditState ($record)
 	{
 		$user = JFactory::getUser();
 
@@ -44,7 +44,7 @@ class UserNotifyModelCategory extends JModelAdmin
 	}
 
 
-	public function getTable($type = 'Category', $prefix = 'UserNotifyTable', $config = array())
+	public function getTable ($type = 'Category', $prefix = 'UserNotifyTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -75,10 +75,10 @@ class UserNotifyModelCategory extends JModelAdmin
 	}
 
 
-	public function getForm($data = array(), $loadData = true)
+	public function getForm ($data = array(), $loadData = true)
 	{
 		// Initialise variables.
-		$app	= JFactory::getApplication();
+		$app = JFactory::getApplication();
 
 		// Get the form.
 		$form = $this->loadForm('com_usernotify.category', 'category', array('control' => 'jform', 'load_data' => $loadData));
@@ -114,13 +114,13 @@ class UserNotifyModelCategory extends JModelAdmin
 		return $form;
 	}
 
-	protected function loadFormData()
+	protected function loadFormData ()
 	{
 		// Check the session for previously entered form data.
 		$data = JFactory::getApplication()->getUserState('com_usernotify.edit.category.data', array());		//echo'<xmp>';var_dump($data);jexit();
 
 		if (empty($data)) {
-			$data = $this->getItem();		//echo'<xmp>';var_dump($data->cid,$this->getState());jexit();
+			$data = $this->getItem();		//var_dump('LFD',$data);//echo'<xmp>';var_dump($data->cid,$this->getState());jexit();
 
 			// Prime some default values.
 			if ($this->getState('category.id') == 0) {
@@ -134,17 +134,19 @@ class UserNotifyModelCategory extends JModelAdmin
 		return $data;
 	}
 
-//	public function getItem($pk = null)
-//	{
-//		if ($item = parent::getItem($pk)) {
-//			// Convert the params field to an array.
-//			$registry = new JRegistry;
-//			$registry->loadString($item->metadata);
-//			$item->metadata = $registry->toArray();
-//		}
-//
-//		return $item;
-//	}
+	public function getItem ($pk = null)
+	{
+		if ($item = parent::getItem($pk)) {	//var_dump('GI',$item);
+			// Convert the grps field to an array.
+	//		$r = new JRegistry();
+		//	if ($r->loadString($item->grps))
+	//		$item->grps = $r->loadString($item->grps)->count() ? $r->toArray() : array($item->grps);
+			if ($item->grps)
+				$item->grps = explode(',', $item->grps);
+		}
+
+		return $item;
+	}
 
 	protected function getReorderConditions ($table)
 	{

@@ -20,6 +20,27 @@ class UserNotifyModelUserNotify extends JModelList
 		parent::__construct($config);
 	}
 
+
+	public function getItems ()
+	{
+		if ($items = parent::getItems()) {
+			foreach ($items as &$item) {
+				if (empty($item->grps)) continue;
+			//	$r = new JRegistry();
+			//	$r->loadString($item->grps);
+			//	$grps = $r->count() ? $r->toArray() : array($item->grps);
+				$grps = explode(',', $item->grps);
+				$nams = array();
+				foreach ($grps as $grp) {
+					$nams[] = $this->getGrpName($grp);
+				}
+				$item->grps = implode('<br />', $nams);
+			}
+		}
+		return $items;
+	}
+
+
 	protected function populateState ($ordering = null, $direction = null)
 	{
 		// Load the filter state
@@ -46,6 +67,7 @@ class UserNotifyModelUserNotify extends JModelList
 		parent::populateState('a.title', 'asc');
 	}
 
+
 	protected function getListQuery ()
 	{
 		$cOpts = JComponentHelper::getParams('com_usernotify');
@@ -62,6 +84,21 @@ class UserNotifyModelUserNotify extends JModelList
 			->join('LEFT', '`#__usernotify_c` AS n ON n.cid = c.id');
 
 		return $query;
+	}
+
+
+	private function getGrpName ($gid)
+	{
+		static $names = array();
+
+		if (empty($names[$gid])) {
+			$db = $this->getDbo();
+			$db->setQuery('SELECT title FROM #__usergroups WHERE id='.$gid);
+			$nam = $db->loadResult();
+			$names[$gid] = $nam ?: '<deleted>';
+		}
+
+		return $names[$gid];
 	}
 
 }

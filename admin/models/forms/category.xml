@@ -2,7 +2,7 @@
 <form>
 	<fieldset>
 
-		<field name="pub" type="radio" class="btn-group btn-group-yesno" default="0"
+		<field name="pub" type="radio" class="btn-group btn-group-yesno" default="1"
 			label="COM_USERNOTIFY_FIELD_ONPUB_LABEL" 
 			description="COM_USERNOTIFY_FIELD_ONPUB_DESC">
 			<option value="1">JYES</option>
@@ -15,6 +15,15 @@
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
+
+		<field
+			name="grps"
+			required="true"
+			type="usergrouplist"
+			multiple="true"
+			default="2"
+			label="COM_USERNOTIFY_FIELD_UGRPS_LABEL"
+			description="COM_USERNOTIFY_FIELD_UGRPS_DESC" />
 
 		<field name="email_tmpl" type="editor" cols="80" rows="10"
 			buttons="true" hide="pagebreak,readmore,article,image"

@@ -30,6 +30,13 @@ class UserNotifyTableCategory extends JTable
 			$array['metadata'] = (string)$registry;
 		}
 
+		if (isset($array['grps']) && is_array($array['grps'])) {
+		//	$r = new JRegistry();
+		//	$r->loadArray($array['grps']);
+		//	$array['grps'] = (string) $r;
+			$array['grps'] = implode(',', $array['grps']);
+		}
+
 		return parent::bind($array, $ignore);
 	}
 

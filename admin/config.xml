@@ -9,9 +9,9 @@
 			label="COM_USERNOTIFY_FIELD_COMPONENTS_LABEL">
 		</field>
 
-	</fieldset>
+<!--	</fieldset>
 
-	<fieldset name="category" label="JCATEGORY" description="COM_USERNOTIFY_CATEGORY_DESC">
+	<fieldset name="category" label="JCATEGORY" description="COM_USERNOTIFY_CATEGORY_DESC"> -->
 
 		<field name="optinout" type="list" class="" default="0"
 			label="COM_USERNOTIFY_FIELD_OPTINOUT_LABEL"
@@ -34,7 +34,11 @@
 				<option value="0">JNO</option>
 			</field>
 
-		<field name="subject" type="text"
+	</fieldset>
+
+	<fieldset name="templates" label="COM_USERNOTIFY_TEMPLATES_LABEL" description="COM_USERNOTIFY_TEMPLATES_DESC">
+
+		<field name="subject" type="text" class="input-xlarge"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SUBJECT_LABEL"
 			description="COM_USERNOTIFY_FIELD_SUBJECT_DESC" />
@@ -45,11 +49,23 @@
 			label="COM_USERNOTIFY_FIELD_EMAIL_LABEL"
 			description="COM_USERNOTIFY_FIELD_EMAIL_DESC" />
 
+		<field name="emailu_tmpl" type="editor" width="80%" height="400"
+			buttons="true" hide="pagebreak,readmore,article,image"
+			filter="safehtml"
+			label="COM_USERNOTIFY_FIELD_EMAILU_LABEL"
+			description="COM_USERNOTIFY_FIELD_EMAILU_DESC" />
+
 		<field name="sms_tmpl" type="editor" width="80%" height="400"
 			buttons="true" hide="pagebreak,readmore,article,image"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SMS_LABEL"
 			description="COM_USERNOTIFY_FIELD_SMS_DESC" />
+
+		<field name="smsu_tmpl" type="editor" width="80%" height="400"
+			buttons="true" hide="pagebreak,readmore,article,image"
+			filter="safehtml"
+			label="COM_USERNOTIFY_FIELD_SMSU_LABEL"
+			description="COM_USERNOTIFY_FIELD_SMSU_DESC" />
 
 	</fieldset>
 
@@ -66,6 +82,6 @@
 
 	</fieldset>
 
-	<help key="JHELP_COMPONENTS_COM_USERNOTIFY_OPTIONS" />
+	<help key="JHELP_COMPONENTS_COM_USERNOTIFY_OOOPTIONS" local="true" />
 
 </config>

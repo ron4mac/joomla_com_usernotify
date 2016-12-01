@@ -21,6 +21,7 @@ JFactory::getDocument()->addStyleDeclaration('.catstbl .controls {margin-left: 0
 
 // options for the tabs
 $tabOptions = array('active' => 'tab1_id');
+$shupd = ($this->params->get('upd', 0) == 1);
 ?>
 <div class="usersubs-category<?php echo $this->params->get('pageclass_sfx');?>">
 <?php if ($this->params->def('show_page_heading', 1)) : ?>
@@ -44,14 +45,18 @@ $tabOptions = array('active' => 'tab1_id');
 					<th class="head1 hasTooltip" title="<?=JText::_('COM_USERNOTIFY_SUB_CAT_DESC')?>"><?=JText::_('COM_USERNOTIFY_SUB_CAT')?></th>
 					<th class="head23 hasTooltip" title="<?=JText::_('COM_USERNOTIFY_SUB_EMAIL_DESC')?>"><?=JText::_('COM_USERNOTIFY_SUB_EMAIL')?></th>
 					<th class="head23 hasTooltip" title="<?=JText::_('COM_USERNOTIFY_SUB_SMS_DESC')?>"><?=JText::_('COM_USERNOTIFY_SUB_SMS')?></th>
+					<?php if ($shupd): ?>
 					<th class="head23 hasTooltip" title="<?=JText::_('COM_USERNOTIFY_SUB_UPDT_DESC')?>"><?=JText::_('COM_USERNOTIFY_SUB_UPDT')?></th>
+					<?php endif; ?>
 				</tr>
 				<? foreach ($this->cats as $cat): ?>
 				<tr>
 					<td class="hasPopover" data-content="<?=strip_tags($cat['description'])?>"><?=$cat['title']?></td>
-					<td class="center"><?=$this->form->renderField('email'.$cat['cid'], 'cats')?></td>
-					<td class="center"><?=$this->form->renderField('sms'.$cat['cid'], 'cats')?></td>
-					<td class="center"><?=$this->form->renderField('update'.$cat['cid'], 'cats')?></td>
+					<td class="center"><?=$this->form->renderField('eml', 'cats.'.$cat['cid'])?></td>
+					<td class="center"><?=$this->form->renderField('sms', 'cats.'.$cat['cid'])?></td>
+					<?php if ($shupd): ?>
+					<td class="center"><?=$this->form->renderField('upd', 'cats.'.$cat['cid'])?></td>
+					<?php endif; ?>
 				</tr>
 				<? endforeach; ?>
 				</table>

@@ -10,6 +10,7 @@ defined('_JEXEC') or die;
 class UserNotifyModelUsernotify extends JModelForm
 {
 	protected $tbl = null;
+	protected $tbluc = null;
 	protected $cats = null;
 
 	public function getForm ($data=array(), $loadData=true)
@@ -26,24 +27,44 @@ class UserNotifyModelUsernotify extends JModelForm
 		$ynradio = '" type="radio" default="0" hiddenLabel="hidden" class="btn-group btn-group-yesno catset"><option value="1" class="btn-mini">JYES</option><option value="0" class="btn-mini">JNO</option></field>';
 		foreach ($cats as $cat) {
 			$cid = $cat['cid'];
+			$flds .= '<fields name="'.$cid.'">';
 			$flds .= '<fieldset name="cat'.$cid.'">';
-			$flds .= '<field name="email'.$cid.$ynradio;
-			$flds .= '<field name="sms'.$cid.$ynradio;
-			$flds .= '<field name="update'.$cid.$ynradio;
-			$flds .='</fieldset>';
+//			$flds .= '<field name="email'.$cid.$ynradio;
+//			$flds .= '<field name="sms'.$cid.$ynradio;
+//			$flds .= '<field name="update'.$cid.$ynradio;
+			$flds .= '<field name="eml'.$ynradio;
+			$flds .= '<field name="sms'.$ynradio;
+			$flds .= '<field name="upd'.$ynradio;
+			$flds .= '</fieldset>';
+			$flds .= '</fields>';
 		}
 		$form->load('<form><fields name="cats"><fieldset name="ucopts">'.$flds.'</fieldset></fields></form>');
+//		$form->load('<form><fieldset name="ucopts">'.$flds.'</fieldset></form>');
+//		$form->load('<form>'.$flds.'</form>');
 
 		// by default, set email on for each category
 		$cdat = array();
 		foreach ($cats as $cat) {
-			$cdat['email'.$cat['cid']] = 1;
+			$cdat[$cat['cid']]['eml'] = 1;
 		}
 
 		// merge in the user's actual settings
-		if ($this->tbl->serdat) {
-			$ucats = unserialize(base64_decode($this->tbl->serdat));		//echo'<xmp>';var_dump($ucats);echo'</xmp>';
-			$cdat = array_merge($cdat, $ucats);
+//		if ($this->tbl->serdat) {
+//			$ucats = unserialize(base64_decode($this->tbl->serdat));		//echo'<xmp>';var_dump($ucats);echo'</xmp>';
+//			$cdat = $ucats + $cdat;		//echo'<xmp>';var_dump($cdat);echo'</xmp>';
+//		}
+
+		// merge in the user's actual settings
+		$uid = JFactory::getUser()->get('id');
+		if ($ccfgs = $this->tbluc->getUserCcfg($uid)) {
+			$ucats = array();
+			foreach ($ccfgs as $ccfg) {
+				$ucats[$ccfg['catid']]['eml'] = $ccfg['eml'];
+				$ucats[$ccfg['catid']]['sms'] = $ccfg['sms'];
+				$ucats[$ccfg['catid']]['upd'] = $ccfg['upd'];
+			}
+			//echo'<xmp>';var_dump($ucats);echo'</xmp>';
+			$cdat = $ucats + $cdat;		//echo'<xmp>';var_dump($cdat);echo'</xmp>';
 		}
 
 		// bind in the category stuff
@@ -59,6 +80,8 @@ class UserNotifyModelUsernotify extends JModelForm
 	{
 		$uid = JFactory::getUser()->get('id');
 		$this->tbl = $this->getTable();
+		$this->tbluc = $this->getTable('usernotifyuc');
+//		$ccfg = $this->tbluc->getUserCcfg($uid);	//echo'<xmp>';var_dump($this->tbluc);echo'</xmp>';jexit();
 		if ($this->tbl->load(array('uid'=>$uid))) {
 			return $this->tbl;
 		} else {
@@ -69,11 +92,19 @@ class UserNotifyModelUsernotify extends JModelForm
 
 	public function saveUserSettings ($data)
 	{
-		$vals = $data;	//['opts'];
+		$vals = $data;	//echo'<xmp>';var_dump($data['cats']);echo'</xmp>';jexit();	//['opts'];
 		$vals['uid'] = JFactory::getUser()->get('id');
-		$vals['serdat'] = isset($data['cats']) ? base64_encode(serialize($data['cats'])) : '';
+//		$vals['serdat'] = isset($data['cats']) ? base64_encode(serialize($data['cats'])) : '';
 		$this->tbl = $this->getTable();
 		$this->tbl->save($vals);
+
+		if (isset($data['cats'])) {
+			$uid = JFactory::getUser()->get('id');
+			$tbluc = $this->getTable('usernotifyuc');
+			foreach ($data['cats'] as $cid=>$opts) {
+				$tbluc->save(array_merge(array('catid'=>$cid, 'uid'=>$uid), $opts));
+			}
+		}
 	}
 
 

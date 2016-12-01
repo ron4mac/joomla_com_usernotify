@@ -21,13 +21,14 @@ $canOrder = $user->authorise('core.edit.state', 'com_usernotify.category');
 $archived = $this->state->get('filter.state') == 2 ? true : false;
 $trashed = $this->state->get('filter.state') == -2 ? true : false;
 $saveOrder = $listOrder == 'a.ordering';
+$notcfgd = JText::_('COM_USERNOTIFY_NOT_CONFIGURED');
 //echo'<xmp>';var_dump($this->items);echo'</xmp>';
 //error_log('We have entered the usernotify view');
 //trigger_error('We have entered the usernotify view');
 ?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_usernotify&view=usernotify'); ?>" method="post" name="adminForm" id="adminForm">
-	<div id="j-main-container" class="span10">
+	<div id="j-main-container" class="span12">
 	<div class="clr"> </div>
 
 	<table class="table table-striped adminlist">
@@ -38,6 +39,9 @@ $saveOrder = $listOrder == 'a.ordering';
 				</th>
 				<th class="title">
 					<?php echo JHtml::_('grid.sort',  'JGLOBAL_TITLE', 'c.title', $listDirn, $listOrder); ?>
+				</th>
+				<th>
+					<?php echo JText::_('COM_USERNOTIFY_NOTIFY_UGRPS_HEAD'); ?>
 				</th>
 				<th class="center" width="15%">
 					<?php echo JHtml::_('grid.sort',  'COM_USERNOTIFY_NOTIFY_PUB_HEAD', 'n.pub', $listDirn, $listOrder); ?>
@@ -79,6 +83,9 @@ $saveOrder = $listOrder == 'a.ordering';
 					<a href="<?php echo $cat_edt_link; ?>"><?php echo $this->escape($item->title).' ('.$this->escape($item->extension).')'; ?></a>
 				</td>
 			<?php if ($item->nid): ?>
+				<td>
+					<?= $item->grps ?>
+				</td>
 				<td class="center<?= $item->pub?' ticked':'' ?>">
 				</td>
 				<td class="center<?= $item->upd?' ticked':'' ?>">
@@ -88,8 +95,8 @@ $saveOrder = $listOrder == 'a.ordering';
 				<td class="center<?= $item->sms_tmpl?' ticked':'' ?>">
 				</td>
 			<?php else: ?>
-				<td class="center" colspan="4">
-					<?= JText::_('COM_USERNOTIFY_NOT_CONFIGURED') ?>
+				<td class="center" colspan="5">
+					<?= $notcfgd ?>
 				</td>
 			<?php endif; ?>
 				<td class="center">

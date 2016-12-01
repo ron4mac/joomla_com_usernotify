@@ -71,7 +71,12 @@ class UserNotifyModelUserNotify extends JModelList
 	protected function getListQuery ()
 	{
 		$cOpts = JComponentHelper::getParams('com_usernotify');
-		$targs = '"' . implode('","', $cOpts->get('target')) . '"';
+		$targs = -1;
+		if ($cOpts->get('target')) {
+			$targs = '"' . implode('","', $cOpts->get('target')) . '"';
+		} else {
+			JFactory::getApplication()->enqueueMessage(JText::_('COM_USERNOTIFY_SETUP_OPTIONS'), 'Notice');
+		}
 
 		// Create a new query object
 		$db = $this->getDbo();

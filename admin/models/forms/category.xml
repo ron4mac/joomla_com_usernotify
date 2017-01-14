@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<fieldset>
+	<fieldset name="settings" label="COM_USERNOTIFY_CAT_SETTINGS" description="COM_USERNOTIFY_CAT_SETTINGS_DESC">
 
 		<field name="pub" type="radio" class="btn-group btn-group-yesno" default="1"
 			label="COM_USERNOTIFY_FIELD_ONPUB_LABEL" 
@@ -22,17 +22,21 @@
 			type="usergrouplist"
 			multiple="true"
 			default="2"
+			size="6"
 			label="COM_USERNOTIFY_FIELD_UGRPS_LABEL"
 			description="COM_USERNOTIFY_FIELD_UGRPS_DESC" />
 
+	</fieldset>
+	<fieldset name="templates" label="COM_USERNOTIFY_CAT_TEMPLATES" description="COM_USERNOTIFY_CAT_TEMPLATES_DESC">
+
 		<field name="email_tmpl" type="editor" cols="80" rows="10"
-			buttons="true" hide="pagebreak,readmore,article,image"
+			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_EMAIL_LABEL"
 			description="COM_USERNOTIFY_FIELD_EMAIL_DESC" />
 
 		<field name="sms_tmpl" type="editor" width="80%" height="400"
-			buttons="true" hide="pagebreak,readmore,article,image"
+			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SMS_LABEL"
 			description="COM_USERNOTIFY_FIELD_SMS_DESC" />

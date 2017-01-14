@@ -11,38 +11,38 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 JHtml::_('behavior.tooltip');
 JHtml::_('behavior.formvalidation');
 JHtml::_('behavior.keepalive');
-//echo'<xmp>';var_dump($this->state->get('category.id'));jexit();
+$tabs = $this->form->getFieldsets();
 ?>
 <script type="text/javascript">
 	Joomla.submitbutton = function(task)
 	{
 		if (task == 'category.cancel' || document.formvalidator.isValid(document.id('category-form'))) {
-			<?php echo $this->form->getField('email_tmpl')->save(); ?>
-			<?php echo $this->form->getField('sms_tmpl')->save(); ?>
+			<?=$this->form->getField('email_tmpl')->save();?>
+			<?=$this->form->getField('sms_tmpl')->save();?>
 			Joomla.submitform(task, document.getElementById('category-form'));
 		}
 		else {
-			alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
+			alert('<?=$this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
 		}
 	}
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_usernotify&layout=edit&nid='.(int) $this->nid); ?>" method="post" name="adminForm" id="category-form" class="form-horizontal form-validate">
+<form action="<?=JRoute::_('index.php?option=com_usernotify&layout=edit&nid='.(int) $this->nid); ?>" method="post" name="adminForm" id="category-form" class="form-horizontal form-validate">
 	<fieldset class="adminform">
-		<legend><?php echo $this->catExt; ?></legend>
+		<legend><?=$this->catExt; ?></legend>
 		<div class="form-horizontal">
-
-		<? foreach ($this->form->getFieldset() as $field): ?>
-		<div class="control-group">
-			<? if (!$field->hidden): ?>
-			<div class="control-label"><?=$field->label?></div>
-			<? endif; ?>
-			<div class="controls"><?=$field->input?></div>
-		</div>
-		<? endforeach; ?>
-
+<?php
+	echo JHtml::_('bootstrap.startTabSet', 'ID-Tabs-Group', array('active'=>'settings_id'));
+	foreach ($tabs as $tab) {
+		echo JHtml::_('bootstrap.addTab', 'ID-Tabs-Group', $tab->name.'_id', JText::_($tab->label));
+		echo '<div class="tab-description alert alert-info">'.JText::_($tab->description).'</div>';
+		echo $this->form->renderFieldset($tab->name);
+		echo JHtml::_('bootstrap.endTab');
+	}
+	echo JHtml::_('bootstrap.endTabSet');
+?>
 		</div>
 	</fieldset>
 	<input type="hidden" name="task" value="" />
-	<?php echo JHtml::_('form.token'); ?>
+	<?=JHtml::_('form.token'); ?>
 </form>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<config>
+<config helpURL="http://rjcrans.net/dev/joomla/{component}/help/{language}/{keyref}">
 
 	<fieldset name="component" label="COM_USERNOTIFY_COMPONENT_LABEL" addfieldpath="/administrator/components/com_usernotify/models/fields">
 
@@ -8,10 +8,6 @@
 			description="COM_USERNOTIFY_FIELD_COMPONENTS_DESC"
 			label="COM_USERNOTIFY_FIELD_COMPONENTS_LABEL">
 		</field>
-
-<!--	</fieldset>
-
-	<fieldset name="category" label="JCATEGORY" description="COM_USERNOTIFY_CATEGORY_DESC"> -->
 
 		<field name="optinout" type="list" class="" default="0"
 			label="COM_USERNOTIFY_FIELD_OPTINOUT_LABEL"
@@ -44,25 +40,27 @@
 			description="COM_USERNOTIFY_FIELD_SUBJECT_DESC" />
 
 		<field name="email_tmpl" type="editor" width="80%" height="400"
-			buttons="true" hide="pagebreak,readmore,article,image"
+			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_EMAIL_LABEL"
 			description="COM_USERNOTIFY_FIELD_EMAIL_DESC" />
 
 		<field name="emailu_tmpl" type="editor" width="80%" height="400"
-			buttons="true" hide="pagebreak,readmore,article,image"
+			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_EMAILU_LABEL"
 			description="COM_USERNOTIFY_FIELD_EMAILU_DESC" />
 
 		<field name="sms_tmpl" type="editor" width="80%" height="400"
-			buttons="true" hide="pagebreak,readmore,article,image"
+			default="COM_USERNOTIFY_SMS_MESSAGE"
+			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SMS_LABEL"
 			description="COM_USERNOTIFY_FIELD_SMS_DESC" />
 
 		<field name="smsu_tmpl" type="editor" width="80%" height="400"
-			buttons="true" hide="pagebreak,readmore,article,image"
+			default="COM_USERNOTIFY_SMSU_MESSAGE"
+			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SMSU_LABEL"
 			description="COM_USERNOTIFY_FIELD_SMSU_DESC" />

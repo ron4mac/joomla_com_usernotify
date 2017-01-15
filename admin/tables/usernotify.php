@@ -32,10 +32,4 @@ class TableUsernotify extends JTable
 		return parent::bind($array, $ignore);
 	}
 
-
-//	public function store ($updateNulls = false)
-//	{
-//		return parent::store($updateNulls);
-//	}
-
 }

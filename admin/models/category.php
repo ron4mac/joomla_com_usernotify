@@ -20,7 +20,7 @@ class UserNotifyModelCategory extends JModelAdmin
 				return ;
 			}
 			$user = JFactory::getUser();
-	
+
 			if ($record->catid) {
 				return $user->authorise('core.delete', 'com_usernotify.category.'.(int) $record->catid);
 			}
@@ -117,10 +117,10 @@ class UserNotifyModelCategory extends JModelAdmin
 	protected function loadFormData ()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_usernotify.edit.category.data', array());		//echo'<xmp>';var_dump($data);jexit();
+		$data = JFactory::getApplication()->getUserState('com_usernotify.edit.category.data', array());
 
 		if (empty($data)) {
-			$data = $this->getItem();		//var_dump('LFD',$data);//echo'<xmp>';var_dump($data->cid,$this->getState());jexit();
+			$data = $this->getItem();
 
 			// Prime some default values.
 			if ($this->getState('category.id') == 0) {
@@ -129,18 +129,15 @@ class UserNotifyModelCategory extends JModelAdmin
 			}
 			if (!$data->cid)
 				$data->set('cid', $app->getUserState('com_usernotify.cfg.category.cid'));
-		}		//echo'<xmp>';var_dump($data);jexit();
+		}
 
 		return $data;
 	}
 
 	public function getItem ($pk = null)
 	{
-		if ($item = parent::getItem($pk)) {	//var_dump('GI',$item);
+		if ($item = parent::getItem($pk)) {
 			// Convert the grps field to an array.
-	//		$r = new JRegistry();
-		//	if ($r->loadString($item->grps))
-	//		$item->grps = $r->loadString($item->grps)->count() ? $r->toArray() : array($item->grps);
 			if ($item->grps)
 				$item->grps = explode(',', $item->grps);
 		}
@@ -154,40 +151,5 @@ class UserNotifyModelCategory extends JModelAdmin
 		$condition[] = 'catid = '.(int) $table->catid;
 		return $condition;
 	}
-
-/*	public function checkout ($pk = null)
-	{	return true;
-		$pk = (!empty($pk)) ? $pk : (int) $this->getState($this->getName() . '.id');
-		if (parent::getItem($pk)) {
-			return parent::checkout($pk);
-		} else {
-			return true;
-		}
-	}
-*/
-
-/*
-	public function checkin ($pks = array())
-	{	//var_dump($pks);jexit();
-		return parent::checkin($pks);
-	}
-
-	public function getItem ($pk = null)
-	{
-		return parent::getItem($pk);
-	}
-
-	public function save ($data)
-	{
-		//echo'<xmp>';var_dump($data);jexit();
-		//$data['nid'] = '18';
-		return parent::save($data);
-	}
-
-	protected function prepareTable ($table)
-	{
-		// Derived class will provide its own implementation if required.
-	}
-*/
 
 }

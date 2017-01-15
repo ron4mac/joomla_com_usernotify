@@ -14,7 +14,7 @@ class UserNotifyControllerCategory extends JControllerForm
 	protected $view_list = 'usernotify';	// view to return to after edit/cancel
 
 	public function config ($key=null, $urlVar=null)
-	{	//echo'<xmp>';var_dump($this);jexit();
+	{
 		$app = JFactory::getApplication();
 		$model = $this->getModel();
 		$table = $model->getTable();
@@ -33,17 +33,13 @@ class UserNotifyControllerCategory extends JControllerForm
 
 		// Get the previous record id (if any) and the current record id.
 		$recordId = (int) (count($cid) ? $cid[0] : $this->input->getInt('ncid'/*$urlVar*/));
-		$checkin = property_exists($table, 'checked_out');	//echo'<xmp>';var_dump($recordId);jexit();
+		$checkin = property_exists($table, 'checked_out');
 
 		$catid = $recordId;
-		$recordId = $model->getNid4Cid($recordId);	//var_dump($recordId);jexit();
-//		if (!$recordId) {
-//			return $this->add();
-//		}
+		$recordId = $model->getNid4Cid($recordId);
+
 		$app->setUserState($context . '.nid', $recordId);
 		$app->setUserState($context . '.cid', $catid);
-	//	$model->setState('category.cfg.nid', $recordId);
-	//	$model->setState('category.cfg.cid', $catid);
 
 		// Access check.
 		if (!$this->allowEdit(array($key => $recordId), $key)) {
@@ -93,9 +89,7 @@ class UserNotifyControllerCategory extends JControllerForm
 
 	public function trash ()
 	{
-		$app = JFactory::getApplication();
 		$model = $this->getModel();
-		$table = $model->getTable();
 		$cids = $this->input->post->get('cid', array(), 'array');
 
 		$model->resetCategories($cids);

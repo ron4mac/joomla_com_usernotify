@@ -1,4 +1,0 @@
-function manageCfgForm (evt, elm)
-{
-	
-}

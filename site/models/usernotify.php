@@ -29,9 +29,6 @@ class UserNotifyModelUsernotify extends JModelForm
 			$cid = $cat['cid'];
 			$flds .= '<fields name="'.$cid.'">';
 			$flds .= '<fieldset name="cat'.$cid.'">';
-//			$flds .= '<field name="email'.$cid.$ynradio;
-//			$flds .= '<field name="sms'.$cid.$ynradio;
-//			$flds .= '<field name="update'.$cid.$ynradio;
 			$flds .= '<field name="eml'.$ynradio;
 			$flds .= '<field name="sms'.$ynradio;
 			$flds .= '<field name="upd'.$ynradio;
@@ -39,20 +36,12 @@ class UserNotifyModelUsernotify extends JModelForm
 			$flds .= '</fields>';
 		}
 		$form->load('<form><fields name="cats"><fieldset name="ucopts">'.$flds.'</fieldset></fields></form>');
-//		$form->load('<form><fieldset name="ucopts">'.$flds.'</fieldset></form>');
-//		$form->load('<form>'.$flds.'</form>');
 
 		// by default, set email on for each category
 		$cdat = array();
 		foreach ($cats as $cat) {
 			$cdat[$cat['cid']]['eml'] = 1;
 		}
-
-		// merge in the user's actual settings
-//		if ($this->tbl->serdat) {
-//			$ucats = unserialize(base64_decode($this->tbl->serdat));		//echo'<xmp>';var_dump($ucats);echo'</xmp>';
-//			$cdat = $ucats + $cdat;		//echo'<xmp>';var_dump($cdat);echo'</xmp>';
-//		}
 
 		// merge in the user's actual settings
 		$uid = JFactory::getUser()->get('id');
@@ -63,8 +52,7 @@ class UserNotifyModelUsernotify extends JModelForm
 				$ucats[$ccfg['catid']]['sms'] = $ccfg['sms'];
 				$ucats[$ccfg['catid']]['upd'] = $ccfg['upd'];
 			}
-			//echo'<xmp>';var_dump($ucats);echo'</xmp>';
-			$cdat = $ucats + $cdat;		//echo'<xmp>';var_dump($cdat);echo'</xmp>';
+			$cdat = $ucats + $cdat;
 		}
 
 		// bind in the category stuff
@@ -81,7 +69,6 @@ class UserNotifyModelUsernotify extends JModelForm
 		$uid = JFactory::getUser()->get('id');
 		$this->tbl = $this->getTable();
 		$this->tbluc = $this->getTable('usernotifyuc');
-//		$ccfg = $this->tbluc->getUserCcfg($uid);	//echo'<xmp>';var_dump($this->tbluc);echo'</xmp>';jexit();
 		if ($this->tbl->load(array('uid'=>$uid))) {
 			return $this->tbl;
 		} else {
@@ -92,9 +79,8 @@ class UserNotifyModelUsernotify extends JModelForm
 
 	public function saveUserSettings ($data)
 	{
-		$vals = $data;	//echo'<xmp>';var_dump($data['cats']);echo'</xmp>';jexit();	//['opts'];
+		$vals = $data;
 		$vals['uid'] = JFactory::getUser()->get('id');
-//		$vals['serdat'] = isset($data['cats']) ? base64_encode(serialize($data['cats'])) : '';
 		$this->tbl = $this->getTable();
 		$this->tbl->save($vals);
 

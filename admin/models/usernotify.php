@@ -26,9 +26,6 @@ class UserNotifyModelUserNotify extends JModelList
 		if ($items = parent::getItems()) {
 			foreach ($items as &$item) {
 				if (empty($item->grps)) continue;
-			//	$r = new JRegistry();
-			//	$r->loadString($item->grps);
-			//	$grps = $r->count() ? $r->toArray() : array($item->grps);
 				$grps = explode(',', $item->grps);
 				$nams = array();
 				foreach ($grps as $grp) {

@@ -9,7 +9,8 @@ defined('_JEXEC') or die;
 
 class UserNotifyHelper
 {
-	public static function addSubmenu($vName = 'usernotify')
+
+	public static function addSubmenu ($vName = 'usernotify')
 	{
 		JSubMenuHelper::addEntry(
 			JText::_('COM_USERNOTIFY_SUBMENU_USERNOTIFY'),
@@ -29,10 +30,10 @@ class UserNotifyHelper
 	}
 
 
-	public static function getActions($categoryId = 0)
+	public static function getActions ($categoryId = 0)
 	{
 		$user = JFactory::getUser();
-		$result = new JObject;
+		$result = new JObject();
 
 		if (empty($categoryId)) {
 			$assetName = 'com_usernotify';
@@ -45,7 +46,7 @@ class UserNotifyHelper
 		);
 
 		foreach ($actions as $action) {
-			$result->set($action,	$user->authorise($action, $assetName));
+			$result->set($action, $user->authorise($action, $assetName));
 		}
 
 		return $result;

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
+
 	<fieldset name="settings" label="COM_USERNOTIFY_CAT_SETTINGS" description="COM_USERNOTIFY_CAT_SETTINGS_DESC">
 
 		<field name="pub" type="radio" class="btn-group btn-group-yesno" default="1"
 			label="COM_USERNOTIFY_FIELD_ONPUB_LABEL" 
-			description="COM_USERNOTIFY_FIELD_ONPUB_DESC">
+			description="COM_USERNOTIFY_FIELD_ONPUB_DESC"
+		>
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
 
 		<field name="upd" type="radio" class="btn-group btn-group-yesno" default="0"
 			label="COM_USERNOTIFY_FIELD_ONUPD_LABEL" 
-			description="COM_USERNOTIFY_FIELD_ONUPD_DESC">
+			description="COM_USERNOTIFY_FIELD_ONUPD_DESC"
+		>
 			<option value="1">JYES</option>
 			<option value="0">JNO</option>
 		</field>
@@ -24,25 +27,30 @@
 			default="2"
 			size="6"
 			label="COM_USERNOTIFY_FIELD_UGRPS_LABEL"
-			description="COM_USERNOTIFY_FIELD_UGRPS_DESC" />
+			description="COM_USERNOTIFY_FIELD_UGRPS_DESC"
+		/>
 
 	</fieldset>
+
 	<fieldset name="templates" label="COM_USERNOTIFY_CAT_TEMPLATES" description="COM_USERNOTIFY_CAT_TEMPLATES_DESC">
 
 		<field name="email_tmpl" type="editor" cols="80" rows="10"
 			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_EMAIL_LABEL"
-			description="COM_USERNOTIFY_FIELD_EMAIL_DESC" />
+			description="COM_USERNOTIFY_FIELD_EMAIL_DESC"
+		/>
 
 		<field name="sms_tmpl" type="editor" width="80%" height="400"
 			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SMS_LABEL"
-			description="COM_USERNOTIFY_FIELD_SMS_DESC" />
+			description="COM_USERNOTIFY_FIELD_SMS_DESC"
+		/>
 
 		<field name="nid" type="hidden" value="0" />
 		<field name="cid" type="hidden" value="0" />
 
 	</fieldset>
+
 </form>

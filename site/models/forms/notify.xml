@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-	<!-- <fields name="opts"> -->
-		<fieldset name="uopts">
-			<field name="oo_all" type="radio" class="radio btn-group btn-group-yesno"
-				description="COM_USERNOTIFY_OPTOUTALL_DESC"
-				label="COM_USERNOTIFY_OPTOUTALL_LABEL"
-				default="0"
-			>
-				<option value="1" class="btn-small">JYES</option>
-				<option value="0" class="btn-small">JNO</option>
-			</field>
-		</fieldset>
-		<fieldset name="cuopts">
-			<field name="oo_email" type="radio" class="radio btn-group btn-group-yesno"
-				description="COM_USERNOTIFY_EMAILOK_DESC"
-				label="COM_USERNOTIFY_EMAILOK_LABEL"
-				default="0"
-				showon="oo_all:1"
-			>
-				<option value="1" class="btn-small">JYES</option>
-				<option value="0" class="btn-small">JNO</option>
-			</field>
+	<fieldset name="uopts">
+		<field name="oo_all" type="radio" class="radio btn-group btn-group-yesno"
+			description="COM_USERNOTIFY_OPTOUTALL_DESC"
+			label="COM_USERNOTIFY_OPTOUTALL_LABEL"
+			default="0"
+		>
+			<option value="1" class="btn-small">JYES</option>
+			<option value="0" class="btn-small">JNO</option>
+		</field>
+	</fieldset>
+	<fieldset name="cuopts">
+		<field name="oo_email" type="radio" class="radio btn-group btn-group-yesno"
+			description="COM_USERNOTIFY_EMAILOK_DESC"
+			label="COM_USERNOTIFY_EMAILOK_LABEL"
+			default="0"
+			showon="oo_all:1"
+		>
+			<option value="1" class="btn-small">JYES</option>
+			<option value="0" class="btn-small">JNO</option>
+		</field>
 
-			<field name="alt_email" type="text" class="validate-email"
-				description="COM_USERNOTIFY_ALTEMAIL_DESC"
-				label="COM_USERNOTIFY_ALTEMAIL_LABEL"
-				validate="email"
-				size="45"
-				showon="oo_all:1[AND]oo_email:1"
-			/>
+		<field name="alt_email" type="text" class="validate-email"
+			description="COM_USERNOTIFY_ALTEMAIL_DESC"
+			label="COM_USERNOTIFY_ALTEMAIL_LABEL"
+			validate="email"
+			size="45"
+			showon="oo_all:1[AND]oo_email:1"
+		/>
 
-			<field name="sms_ok" type="radio" class="radio btn-group btn-group-yesno"
-				description="COM_USERNOTIFY_SMSOK_DESC"
-				label="COM_USERNOTIFY_SMSOK_LABEL"
-				default="0"
-				showon="oo_all:1"
-			>
-				<option value="1" class="btn-small">JYES</option>
-				<option value="0" class="btn-small">JNO</option>
-			</field>
+		<field name="sms_ok" type="radio" class="radio btn-group btn-group-yesno"
+			description="COM_USERNOTIFY_SMSOK_DESC"
+			label="COM_USERNOTIFY_SMSOK_LABEL"
+			default="0"
+			showon="oo_all:1"
+		>
+			<option value="1" class="btn-small">JYES</option>
+			<option value="0" class="btn-small">JNO</option>
+		</field>
 
-			<field name="sms_addr" type="text" class="validate-email"
-				description="COM_USERNOTIFY_SMSADDR_DESC"
-				label="COM_USERNOTIFY_SMSADDR_LABEL"
-				validate="email"
-				size="45"
-				showon="oo_all:1[AND]sms_ok:1"
-			/>
+		<field name="sms_addr" type="text" class="validate-email"
+			description="COM_USERNOTIFY_SMSADDR_DESC"
+			label="COM_USERNOTIFY_SMSADDR_LABEL"
+			validate="email"
+			size="45"
+			showon="oo_all:1[AND]sms_ok:1"
+		/>
 
-		</fieldset>
-	<!-- </fields> -->
+	</fieldset>
 </form>

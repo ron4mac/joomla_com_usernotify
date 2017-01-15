@@ -22,9 +22,6 @@ $archived = $this->state->get('filter.state') == 2 ? true : false;
 $trashed = $this->state->get('filter.state') == -2 ? true : false;
 $saveOrder = $listOrder == 'a.ordering';
 $notcfgd = JText::_('COM_USERNOTIFY_NOT_CONFIGURED');
-//echo'<xmp>';var_dump($this->items);echo'</xmp>';
-//error_log('We have entered the usernotify view');
-//trigger_error('We have entered the usernotify view');
 ?>
 
 <form action="<?php echo JRoute::_('index.php?option=com_usernotify&view=usernotify'); ?>" method="post" name="adminForm" id="adminForm">

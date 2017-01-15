@@ -6,29 +6,32 @@
 		<field name="target" type="components"
 			multiple="multiple"
 			description="COM_USERNOTIFY_FIELD_COMPONENTS_DESC"
-			label="COM_USERNOTIFY_FIELD_COMPONENTS_LABEL">
-		</field>
+			label="COM_USERNOTIFY_FIELD_COMPONENTS_LABEL"
+		/>
 
 		<field name="optinout" type="list" class="" default="0"
 			label="COM_USERNOTIFY_FIELD_OPTINOUT_LABEL"
-			description="COM_USERNOTIFY_FIELD_OPTINOUT_DESC">
-				<option value="0">COM_USERNOTIFY_FIELD_OPTINOUT_OUT</option>
-				<option value="1">COM_USERNOTIFY_FIELD_OPTINOUT_IN</option>
+			description="COM_USERNOTIFY_FIELD_OPTINOUT_DESC"
+		>
+			<option value="0">COM_USERNOTIFY_FIELD_OPTINOUT_OUT</option>
+			<option value="1">COM_USERNOTIFY_FIELD_OPTINOUT_IN</option>
 		</field>
 
 		<field name="pub" type="radio" class="btn-group btn-group-yesno" default="0"
 			label="COM_USERNOTIFY_FIELD_ONPUB_LABEL" 
-			description="COM_USERNOTIFY_FIELD_ONPUB_DESC">
-				<option value="1">JYES</option>
-				<option value="0">JNO</option>
-			</field>
+			description="COM_USERNOTIFY_FIELD_ONPUB_DESC"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
 
 		<field name="upd" type="radio" class="btn-group btn-group-yesno" default="0"
 			label="COM_USERNOTIFY_FIELD_ONUPD_LABEL" 
-			description="COM_USERNOTIFY_FIELD_ONUPD_DESC">
-				<option value="1">JYES</option>
-				<option value="0">JNO</option>
-			</field>
+			description="COM_USERNOTIFY_FIELD_ONUPD_DESC"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
 
 	</fieldset>
 
@@ -37,46 +40,50 @@
 		<field name="subject" type="text" class="input-xlarge"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SUBJECT_LABEL"
-			description="COM_USERNOTIFY_FIELD_SUBJECT_DESC" />
+			description="COM_USERNOTIFY_FIELD_SUBJECT_DESC"
+		/>
 
 		<field name="email_tmpl" type="editor" width="80%" height="400"
 			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_EMAIL_LABEL"
-			description="COM_USERNOTIFY_FIELD_EMAIL_DESC" />
+			description="COM_USERNOTIFY_FIELD_EMAIL_DESC"
+		/>
 
 		<field name="emailu_tmpl" type="editor" width="80%" height="400"
 			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_EMAILU_LABEL"
-			description="COM_USERNOTIFY_FIELD_EMAILU_DESC" />
+			description="COM_USERNOTIFY_FIELD_EMAILU_DESC"
+		/>
 
 		<field name="sms_tmpl" type="editor" width="80%" height="400"
 			default="COM_USERNOTIFY_SMS_MESSAGE"
 			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SMS_LABEL"
-			description="COM_USERNOTIFY_FIELD_SMS_DESC" />
+			description="COM_USERNOTIFY_FIELD_SMS_DESC"
+		/>
 
 		<field name="smsu_tmpl" type="editor" width="80%" height="400"
 			default="COM_USERNOTIFY_SMSU_MESSAGE"
 			buttons="false"
 			filter="safehtml"
 			label="COM_USERNOTIFY_FIELD_SMSU_LABEL"
-			description="COM_USERNOTIFY_FIELD_SMSU_DESC" />
+			description="COM_USERNOTIFY_FIELD_SMSU_DESC"
+		/>
 
 	</fieldset>
 
-	<fieldset name="permissions"
-		description="JCONFIG_PERMISSIONS_DESC"
-		label="JCONFIG_PERMISSIONS_LABEL">
+	<fieldset name="permissions" description="JCONFIG_PERMISSIONS_DESC" label="JCONFIG_PERMISSIONS_LABEL">
 
 		<field name="rules" type="rules"
 			component="com_usernotify"
 			filter="rules"
 			validate="rules"
 			label="JCONFIG_PERMISSIONS_LABEL"
-			section="component" />
+			section="component"
+		/>
 
 	</fieldset>
 

@@ -11,19 +11,13 @@ jimport('joomla.application.component.view');
 
 class UserNotifyViewUsernotify extends JViewLegacy
 {
-	protected $state;
-	protected $item;
 
 	function display ($tpl = null)
 	{
 		$app = JFactory::getApplication();
-		$params = $app->getParams();
+		$this->params = $app->getParams();
 
 		// Get some data from the models
-		$state = $this->get('State');
-		$item = $this->get('Item');
-
-		$this->params = $params;
 		$this->form = $this->get('Form');
 		$this->cats = $this->get('CatSettings');
 

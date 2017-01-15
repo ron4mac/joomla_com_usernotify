@@ -32,8 +32,6 @@ class UserNotifyViewUserNotify extends JViewLegacy
 		// Include the component HTML helpers.
 		JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-//		$this->sidebar = JHtmlSidebar::render();
-
 		parent::display($tpl);
 	}
 
@@ -50,10 +48,6 @@ class UserNotifyViewUserNotify extends JViewLegacy
 		if ($canDo->get('core.edit')) {
 			JToolBarHelper::editList('category.config','JTOOLBAR_EDIT');
 		}
-//		if ($canDo->get('core.edit.state')) {
-//			JToolBarHelper::divider();
-//			JToolBarHelper::custom('usernotify.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
-//		}
 		JToolBarHelper::trash('category.trash','JTOOLBAR_REMOVE');
 		JToolBarHelper::divider();
 		if ($canDo->get('core.admin')) {

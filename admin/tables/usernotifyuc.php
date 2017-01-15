@@ -22,7 +22,7 @@ class TableUsernotifyuc extends JTable
 			->from($this->_tbl)
 			->where('uid = ' . $uid);
 		$this->_db->setQuery($query);
-		$ccfg = $this->_db->loadAssocList();		//echo'<xmp>';var_dump($ccfg);echo'</xmp>';
+		$ccfg = $this->_db->loadAssocList();
 		return $ccfg;
 	}
 
@@ -34,7 +34,7 @@ class TableUsernotifyuc extends JTable
 			->from($this->_tbl)
 			->where('catid = ' . $catid);
 		$this->_db->setQuery($query);
-		$ccfg = $this->_db->loadAssocList();		//echo'<xmp>';var_dump($ccfg);echo'</xmp>';
+		$ccfg = $this->_db->loadAssocList();
 		return $ccfg;
 	}
 

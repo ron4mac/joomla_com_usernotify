@@ -33,6 +33,22 @@
 			<option value="0">JNO</option>
 		</field>
 
+		<field type="spacer" hr="true" />
+
+		<field name="useQ" type="radio" class="btn-group btn-group-yesno" default="1"
+			label="COM_USERNOTIFY_FIELD_USEQ_LABEL" 
+			description="COM_USERNOTIFY_FIELD_USEQ_DESC"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+
+		<field name="msgper" type="number"
+			filter="integer"
+			label="COM_USERNOTIFY_FIELD_MSGPER_LABEL"
+			description="COM_USERNOTIFY_FIELD_MSGPER_DESC"
+		/>
+
 	</fieldset>
 
 	<fieldset name="templates" label="COM_USERNOTIFY_TEMPLATES_LABEL" description="COM_USERNOTIFY_TEMPLATES_DESC">

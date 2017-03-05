@@ -17,7 +17,23 @@ JHtml::_('behavior.formvalidator');
 
 JHtml::stylesheet('components/com_usernotify/static/css/usernotify.css');
 // more styling added here, and in this way, so it overrides the template
-JFactory::getDocument()->addStyleDeclaration('.catstbl .controls {margin-left: 0;} .catstbl .control-group {margin-bottom: 4px;}');
+JFactory::getDocument()->addStyleDeclaration('
+.catstbl .controls {
+	margin-left: 0;
+}
+.catstbl .control-group {
+	margin-bottom: 4px;
+}
+.nav.nav-tabs {
+	margin-bottom: 0;
+}
+.tab-content{
+	padding: 1em;
+	background-color: #FFF;
+	border: 1px solid #CCC;
+	border-top: none;
+}
+');
 
 // options for the tabs
 $tabOptions = array('active' => 'tab1_id');
@@ -29,16 +45,11 @@ $shupd = ($this->params->get('upd', 0) == 1);
 		<?php echo $this->escape($this->params->get('page_heading')); ?>
 	</h1>
 <?php endif; ?>
+	<div class="alert alert-info"><p><?php echo JText::_('COM_USERNOTIFY_USER_BLURB'); ?></p></div>
 	<form action="<?php echo JRoute::_('index.php?option=com_usernotify'); ?>" method="post" name="adminForm" id="notify-form" class="form-horizontal form-validate">
 		<fieldset class="adminform">
 		<?php echo JHtml::_('bootstrap.startTabSet', 'ID-Tabs-Group', $tabOptions);?>
-		<?php echo JHtml::_('bootstrap.addTab', 'ID-Tabs-Group', 'tab1_id', JText::_('COM_USERNOTIFY_TAB_CONFIGURATION')); ?>
-			<div>
-				<?=$this->form->renderFieldset('uopts')?>
-				<?=$this->form->renderFieldset('cuopts')?>
-			</div>
-		<?php echo JHtml::_('bootstrap.endTab');?>
-		<?php echo JHtml::_('bootstrap.addTab', 'ID-Tabs-Group', 'tab2_id', JText::_('COM_USERNOTIFY_TAB_SUBSCRIPTIONS')); ?>
+		<?php echo JHtml::_('bootstrap.addTab', 'ID-Tabs-Group', 'tab1_id', JText::_('COM_USERNOTIFY_TAB_SUBSCRIPTIONS')); ?>
 			<div>
 				<table class="catstbl table-striped">
 				<tr>
@@ -60,6 +71,12 @@ $shupd = ($this->params->get('upd', 0) == 1);
 				</tr>
 				<? endforeach; ?>
 				</table>
+			</div>
+		<?php echo JHtml::_('bootstrap.endTab');?>
+		<?php echo JHtml::_('bootstrap.addTab', 'ID-Tabs-Group', 'tab2_id', JText::_('COM_USERNOTIFY_TAB_CONFIGURATION')); ?>
+			<div>
+				<?=$this->form->renderFieldset('uopts')?>
+				<?=$this->form->renderFieldset('cuopts')?>
 			</div>
 		<?php echo JHtml::_('bootstrap.endTab');?>
 		<?php echo JHtml::_('bootstrap.endTabSet', 'ID-Tabs-Group');?>
